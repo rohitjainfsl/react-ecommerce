@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./style.css";
+import Products from "./component/Products";
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -16,22 +17,7 @@ function App() {
   return (
     <>
       <div className="products">
-        {products
-          ? products.map((product) => {
-              return (
-                <div key={product.id} className="product">
-                  <div className="product-photo">
-                    <img src={product.image} alt="Product Image" />
-                  </div>
-                  <div className="content">
-                    <h3>{product.title}</h3>
-                    <p>{product.price}</p>
-                    <a href="">Add To Cart</a>
-                  </div>
-                </div>
-              );
-            })
-          : ""}
+        {products ? <Products products={products} /> : ""}
       </div>
     </>
   );

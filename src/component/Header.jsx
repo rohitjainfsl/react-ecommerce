@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ecomContext } from "../Home";
 
 function Header() {
+  const { cart } = useContext(ecomContext);
   return (
     <header>
       <h2>Ecommerce</h2>
@@ -15,7 +18,9 @@ function Header() {
           <Link to="/blog">Blog</Link>
         </li>
         <li>
-          <Link to="/cart">Cart</Link>
+          <Link to="/cart">
+            Cart <span>{cart.length}</span>
+          </Link>
         </li>
         <li>
           <Link to="/contact">Contact</Link>
