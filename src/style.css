@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+ul {
+  list-style: none;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+.products {
+  margin: 2rem auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.product {
+  width: 22%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.product-photo {
+  width: 80%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+.content {
+  padding: 0.5rem 0;
+}
+.content h3,
+.content p,
+.content a {
+  margin-bottom: 0.5rem;
+}
+.content h3 {
+  font-size: 16px;
+}
+.content a {
+  padding: 6px 25px;
+  border: 2px solid #e34e4e;
+  border-radius: 10px;
+  background-color: #e34e4e;
+  color: #fff;
+  transition: all 200ms;
+}
+.content a:hover {
+  background-color: #a93939;
+  border-color: #a93939;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  background-color: #e34e4e;
+  height: 60px;
+  padding: 0.5rem 3rem;
+}
+header ul {
+  display: flex;
+}
+header ul a {
+  padding: 0.25rem;
+  margin: 0.25rem;
+  color: #fff;
+}
