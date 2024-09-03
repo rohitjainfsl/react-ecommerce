@@ -13,20 +13,47 @@ function Home() {
   const [cart, setCart] = useState([]);
 
   function handleAddToCart(productToAdd) {
-    setCart([...cart, productToAdd]);
+    const productAddingToCart = { ...productToAdd, quantity: 1 };
+    setCart([...cart, productAddingToCart]);
+  }
+
+
+  function isProductInCart(product) {
+    const productFound = cart.find((cartItem) => {
+      return cartItem.id === product.id;
+    });
+    return productFound;
+  }
+
+  function handleRemoveFromCart(productToRemove) {
+    setCart(
+      cart.filter((cartItem) => {
+        return cartItem.id !== productToRemove.id;
+      })
+    );
   }
 
   return (
     <BrowserRouter>
-      <ecomContext.Provider value={{ cart, setCart, handleAddToCart }}>
+      <ecomContext.Provider
+        value={{
+          cart,
+          setCart,
+          handleAddToCart,
+          isProductInCart,
+          handleRemoveFromCart,
+        }}
+      >
         <Header />
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route path="/about" element={<About />}></Route>
-          <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<App />}></Route>
+            <Route path="/about" element={<About />}></Route>
+            <Route path="/blog" element={<Blog />}></Route>
+            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
+          </Routes>
+        </main>
       </ecomContext.Provider>
     </BrowserRouter>
   );

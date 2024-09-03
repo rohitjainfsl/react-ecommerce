@@ -2,9 +2,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ecomContext } from "../Home";
+import CartQty from "./CartQty";
 
 function Product({ product }) {
-  const { handleAddToCart } = useContext(ecomContext);
+  const { handleAddToCart, isProductInCart } = useContext(ecomContext);
 
   return (
     <div className="product">
@@ -14,9 +15,13 @@ function Product({ product }) {
       <div className="content">
         <h3>{product.title}</h3>
         <p>{product.price}</p>
-        <Link to="" onClick={() => handleAddToCart(product)}>
-          Add To Cart
-        </Link>
+        {isProductInCart(product) ? (
+          <CartQty product={product} />
+        ) : (
+          <Link to="" onClick={() => handleAddToCart(product)}>
+            Add To Cart
+          </Link>
+        )}
       </div>
     </div>
   );

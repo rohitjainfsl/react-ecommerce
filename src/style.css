@@ -66,7 +66,11 @@ img {
   background-color: #a93939;
   border-color: #a93939;
 }
-
+header,
+footer,
+main {
+  padding: 0.5rem 3rem;
+}
 header {
   display: flex;
   justify-content: space-between;
@@ -74,7 +78,6 @@ header {
   margin-bottom: 1rem;
   background-color: #e34e4e;
   height: 60px;
-  padding: 0.5rem 3rem;
 }
 header ul {
   display: flex;
@@ -83,4 +86,65 @@ header ul a {
   padding: 0.25rem;
   margin: 0.25rem;
   color: #fff;
+}
+.miniCart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0.5rem;
+}
+.cartQty {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.cartQty button,
+.cartQty p {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cartQty button {
+  font-size: 1rem;
+}
+.cartQuantity p {
+  margin-bottom: 0;
+  background-color: rgb(240, 240, 240);
+}
+.miniCart svg {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 400ms;
+}
+.miniCart svg:hover {
+  transform: scale(1.1);
+}
+
+.cart,
+.cart .contents .cartItem {
+  display: flex;
+  gap: 2rem;
+}
+.cart .contents {
+  width: 60%;
+}
+.cart .contents .cartItem {
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.cart .contents .cartItem .left {
+  width: 30%;
+}
+.cart .contents .cartItem .right {
+  width: 40%;
+}
+.cart .contents .cartItem .left img {
+  width: 50%;
+  max-width: 200px;
+  object-fit: contain;
+}
+.cart .total {
+  width: 40%;
 }
