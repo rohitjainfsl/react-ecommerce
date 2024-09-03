@@ -1,11 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ecomContext } from "../Home";
-import CartQty from "../component/CartQty";
 import { Link } from "react-router-dom";
 import { MdCurrencyRupee } from "react-icons/md";
+import CartQty from "../component/CartQty";
 
 function Cart() {
+  const [cartTotal, setCartTotal] = useState(0);
+  const [deliveryFees, setDeliveryFees] = useState(0);
+
   const { cart } = useContext(ecomContext);
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      let total = 0;
+      cart.forEach((cartItem) => (total += cartItem.price * cartItem.quantity));
+      setCartTotal(total.toFixed(2));
+    }
+  }, [cart]);
   return (
     <>
       <h2>Your Shopping Cart</h2>
@@ -24,7 +35,7 @@ function Cart() {
                       Price: <MdCurrencyRupee />
                       {item.price}
                     </p>
-                    <CartQty product={item} />
+                    <CartQty productID={item.id} />
                   </div>
                 </div>
               );
@@ -36,17 +47,17 @@ function Cart() {
             <ul>
               <li>
                 <span>Items: </span>
-                <span></span>
+                <span>{cartTotal}</span>
               </li>
               <li>
                 <span>Delivery: </span>
-                <span></span>
+                <span>{deliveryFees}</span>
               </li>
             </ul>
             <hr />
             <h3>
-              <span></span>
-              <span></span>
+              <span>Your Total:</span>
+              <span>{(Number(cartTotal) + Number(deliveryFees)).toFixed(2)}</span>
             </h3>
           </div>
         </div>

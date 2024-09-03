@@ -1,11 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ecomContext } from "../Home";
 import CartQty from "./CartQty";
 
+
 function Product({ product }) {
-  const { handleAddToCart, isProductInCart } = useContext(ecomContext);
+  const {
+    handleAddToCart,
+    isProductInCart
+  } = useContext(ecomContext);
 
   return (
     <div className="product">
@@ -16,7 +20,7 @@ function Product({ product }) {
         <h3>{product.title}</h3>
         <p>{product.price}</p>
         {isProductInCart(product) ? (
-          <CartQty product={product} />
+          <CartQty productID={product.id} />
         ) : (
           <Link to="" onClick={() => handleAddToCart(product)}>
             Add To Cart

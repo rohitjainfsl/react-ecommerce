@@ -17,7 +17,6 @@ function Home() {
     setCart([...cart, productAddingToCart]);
   }
 
-
   function isProductInCart(product) {
     const productFound = cart.find((cartItem) => {
       return cartItem.id === product.id;
@@ -25,12 +24,36 @@ function Home() {
     return productFound;
   }
 
-  function handleRemoveFromCart(productToRemove) {
+  function handleRemoveFromCart(productID) {
     setCart(
       cart.filter((cartItem) => {
-        return cartItem.id !== productToRemove.id;
+        return cartItem.id !== productID;
       })
     );
+  }
+
+  function increment(productID) {
+    setCart(
+      cart.map((cartItem) =>
+        cartItem.id === productID
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      )
+    );
+  }
+
+  function decrement(productID) {
+    setCart(
+      cart.map((cartItem) =>
+        cartItem.id === productID
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      )
+    );
+  }
+
+  function getProductQuantity(productID) {
+    return cart.find((cartItem) => cartItem.id === productID).quantity;
   }
 
   return (
@@ -42,6 +65,9 @@ function Home() {
           handleAddToCart,
           isProductInCart,
           handleRemoveFromCart,
+          increment,
+          decrement,
+          getProductQuantity,
         }}
       >
         <Header />

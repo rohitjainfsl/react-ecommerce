@@ -1,26 +1,19 @@
-/* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { MdRemoveShoppingCart } from "react-icons/md";
 import { ecomContext } from "../Home";
+import { MdRemoveShoppingCart } from "react-icons/md";
 
-function CartQty({ product }) {
-  const { handleRemoveFromCart, cart } = useContext(ecomContext);
-
-  function getProductQuantity(product) {
-    const productFound = cart.find((cartItem) => {
-      return cartItem.id === product.id;
-    });
-    return productFound.quantity;
-  }
-
+/* eslint-disable react/prop-types */
+function CartQty({ productID }) {
+  const { increment, decrement, getProductQuantity, handleRemoveFromCart } =
+    useContext(ecomContext);
   return (
     <div className="miniCart">
       <div className="cartQty">
-        <button>+</button>
-        <p>{getProductQuantity(product)}</p>
-        <button>-</button>
+        <button onClick={() => increment(productID)}>+</button>
+        <p>{getProductQuantity(productID)}</p>
+        <button onClick={() => decrement(productID)}>-</button>
       </div>
-      <MdRemoveShoppingCart onClick={() => handleRemoveFromCart(product)} />
+      <MdRemoveShoppingCart onClick={() => handleRemoveFromCart(productID)} />
     </div>
   );
 }
